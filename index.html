@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheFrontDesk - Affordable Hookups Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Artistic TFD Logo -->
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#45b7d1;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- T -->
+                    <path d="M 15 20 L 50 20 L 50 35 L 38 35 L 38 75 L 25 75 L 25 35 L 15 35 Z" fill="url(#logoGradient)" opacity="0.9"/>
+                    <!-- F -->
+                    <path d="M 55 20 L 85 20 L 85 32 L 70 32 L 70 42 L 83 42 L 83 52 L 70 52 L 70 75 L 57 75 L 57 20" fill="url(#logoGradient)" opacity="0.9"/>
+                    <!-- D -->
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGradient)" stroke-width="2" opacity="0.3"/>
+                </svg>
+                <span>TheFrontDesk</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#chat">Chat</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to TheFrontDesk</h1>
+            <p>Connect Easily. Meet Safely. Share Your Best Photos. Affordable Rates for Kenyan Community</p>
+            <button class="cta-button" onclick="scrollToRegister()">Get Started</button>
+            
+            <!-- Quick Contact Buttons -->
+            <div class="quick-contact">
+                <a href="https://wa.me/254714810214?text=Hello%20TheFrontDesk%2C%20I%20would%20like%20to%20join" target="_blank" class="contact-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="https://t.me/TheFrontDesk_Official" target="_blank" class="contact-btn telegram">
+                    <i class="fab fa-telegram"></i> Join Telegram Group
+                </a>
+                <a href="mailto:hubdarkest@gmail.com?subject=TheFrontDesk%20Inquiry" class="contact-btn email">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background -->
+                <rect width="400" height="300" fill="#f0f4ff"/>
+                <!-- Connection Lines -->
+                <circle cx="100" cy="80" r="30" fill="#ff6b6b" opacity="0.8"/>
+                <circle cx="300" cy="80" r="30" fill="#4ecdc4" opacity="0.8"/>
+                <circle cx="200" cy="200" r="30" fill="#45b7d1" opacity="0.8"/>
+                <line x1="100" y1="80" x2="200" y2="200" stroke="#ff6b6b" stroke-width="2" opacity="0.5"/>
+                <line x1="300" y1="80" x2="200" y2="200" stroke="#4ecdc4" stroke-width="2" opacity="0.5"/>
+                <!-- People icons -->
+                <circle cx="100" cy="70" r="8" fill="#fff"/>
+                <circle cx="300" cy="70" r="8" fill="#fff"/>
+                <circle cx="200" cy="190" r="8" fill="#fff"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why Choose TheFrontDesk?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-lock"></i>
+                <h3>Secure Transactions</h3>
+                <p>End-to-end encryption for all payments and personal data</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-image"></i>
+                <h3>Photo Gallery</h3>
+                <p>Upload and showcase your best photos securely</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wallet"></i>
+                <h3>Affordable Rates</h3>
+                <p>Competitive pricing tailored for the Kenyan market</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Direct Messaging</h3>
+                <p>Real-time chat and communication with verified members</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock customer support via WhatsApp & Email</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-fire"></i>
+                <h3>Quick Connections</h3>
+                <p>Smart matching algorithm for compatible connections</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="photo-gallery">
+        <h2>Member Photo Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-uploader">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Upload Your Photos</h3>
+                <p>Share your best photos and make a great first impression</p>
+                <input type="file" id="photoInput" multiple accept="image/*" onchange="handlePhotoUpload(event)">
+                <button class="upload-btn" onclick="document.getElementById('photoInput').click()">
+                    <i class="fas fa-camera"></i> Choose Photos
+                </button>
+            </div>
+            
+            <div id="galleryPreview" class="gallery-preview">
+                <!-- Photos will be displayed here -->
+            </div>
+        </div>
+
+        <div class="gallery-info">
+            <h3>Photo Upload Guidelines</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Clear, well-lit photos only</li>
+                <li><i class="fas fa-check"></i> Maximum 5MB per image</li>
+                <li><i class="fas fa-check"></i> Supported formats: JPG, PNG, GIF</li>
+                <li><i class="fas fa-check"></i> Recent photos preferred (taken within 3 months)</li>
+                <li><i class="fas fa-check"></i> All photos verified before publishing</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Messaging/Chat Section -->
+    <section id="chat" class="messaging-section">
+        <h2>Direct Messaging System</h2>
+        <div class="messaging-container">
+            <div class="chat-users">
+                <h3>Active Connections</h3>
+                <div id="usersList" class="users-list">
+                    <div class="user-item" onclick="selectUser(this)">
+                        <div class="user-avatar" style="background: linear-gradient(135deg, #ff6b6b, #ff5252);">JD</div>
+                        <div class="user-info">
+                            <div class="user-name">John Doe</div>
+                            <div class="user-status">Online</div>
+                        </div>
+                    </div>
+                    <div class="user-item" onclick="selectUser(this)">
+                        <div class="user-avatar" style="background: linear-gradient(135deg, #4ecdc4, #45b7d1);">SM</div>
+                        <div class="user-info">
+                            <div class="user-name">Sarah Mwangi</div>
+                            <div class="user-status">Online</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-window">
+                <div class="chat-header">
+                    <h3>Select a connection to start chatting</h3>
+                </div>
+                <div id="chatMessages" class="chat-messages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="messageInput" placeholder="Type your message..." class="message-input">
+                    <button onclick="sendMessage()" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with Payment Integration -->
+    <section id="pricing" class="pricing">
+        <h2>Affordable Pricing (KES)</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-tier">Basic</div>
+                <div class="pricing-amount">KES 299<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Browse Profiles</li>
+                    <li><i class="fas fa-check"></i> Up to 10 Likes/Day</li>
+                    <li><i class="fas fa-check"></i> Send Messages</li>
+                    <li><i class="fas fa-check"></i> Upload 3 Photos</li>
+                    <li><i class="fas fa-times"></i> Video Call</li>
+                </ul>
+                <button class="pricing-button" onclick="initiatePayment('Basic', 299)">Choose Plan</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-tier">Pro</div>
+                <div class="pricing-amount">KES 799<span>/month</span></div>
+                <div class="popular-badge">MOST POPULAR</div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Browse Profiles</li>
+                    <li><i class="fas fa-check"></i> Unlimited Likes</li>
+                    <li><i class="fas fa-check"></i> Unlimited Messages</li>
+                    <li><i class="fas fa-check"></i> Upload 10 Photos</li>
+                    <li><i class="fas fa-check"></i> Video Call (10 mins)</li>
+                </ul>
+                <button class="pricing-button" onclick="initiatePayment('Pro', 799)">Choose Plan</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-tier">Premium</div>
+                <div class="pricing-amount">KES 1,499<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> All Pro Features</li>
+                    <li><i class="fas fa-check"></i> Unlimited Video Calls</li>
+                    <li><i class="fas fa-check"></i> Unlimited Photos</li>
+                    <li><i class="fas fa-check"></i> Priority Support 24/7</li>
+                    <li><i class="fas fa-check"></i> Verified Badge</li>
+                </ul>
+                <button class="pricing-button" onclick="initiatePayment('Premium', 1499)">Choose Plan</button>
+            </div>
+        </div>
+
+        <!-- Payment Methods Info -->
+        <div class="payment-methods">
+            <h3>Flexible Payment Options</h3>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>M-Pesa Payment</h4>
+                    <p>Send payment via M-Pesa to: <strong>0781306215</strong></p>
+                    <p>Include your username as reference</p>
+                </div>
+                <div class="method-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp Assistance</h4>
+                    <p>Need help? Chat with us on WhatsApp</p>
+                    <a href="https://wa.me/254714810214?text=I%20need%20help%20with%20payment" target="_blank" class="whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+                <div class="method-card">
+                    <i class="fab fa-telegram"></i>
+                    <h4>Telegram Support</h4>
+                    <p>Get instant updates and support</p>
+                    <a href="https://t.me/TheFrontDesk_Official" target="_blank" class="telegram-link">
+                        <i class="fab fa-telegram"></i> Join Our Group
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Complete Your Payment</h2>
+            
+            <div class="payment-plan-details">
+                <p>Plan: <strong id="planName"></strong></p>
+                <p>Amount: <strong id="planAmount">KES 0</strong></p>
+            </div>
+
+            <div class="payment-methods-modal">
+                <h3>Select Payment Method</h3>
+                
+                <div class="method-option">
+                    <input type="radio" id="mpesa" name="paymentMethod" value="mpesa" checked>
+                    <label for="mpesa">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>M-Pesa Payment</span>
+                    </label>
+                    <div class="method-details" id="mpesaDetails" style="display: block;">
+                        <p><strong>Send M-Pesa Payment:</strong></p>
+                        <p>Phone: <strong>0781306215</strong></p>
+                        <p>Amount: <strong id="mpesaAmount">KES 0</strong></p>
+                        <p style="font-size: 0.9rem; color: #666;">
+                            Steps:
+                            <br>1. Go to M-Pesa menu on your phone
+                            <br>2. Select "Send Money"
+                            <br>3. Enter: 0781306215
+                            <br>4. Enter amount and PIN
+                            <br>5. Include your username as description
+                        </p>
+                        <input type="text" placeholder="Enter your username" id="usernameRef" class="form-input">
+                    </div>
+                </div>
+
+                <div class="method-option">
+                    <input type="radio" id="whatsapp" name="paymentMethod" value="whatsapp">
+                    <label for="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Pay via WhatsApp</span>
+                    </label>
+                    <div class="method-details" id="whatsappDetails" style="display: none;">
+                        <p><strong>Click below to chat on WhatsApp:</strong></p>
+                        <a href="https://wa.me/254714810214?text=I%20want%20to%20pay%20for%20%5bPLAN%5d%20plan%20-%20KES%20%5bAMOUNT%5d" target="_blank" class="whatsapp-payment-btn">
+                            <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="method-option">
+                    <input type="radio" id="email" name="paymentMethod" value="email">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Request Invoice by Email</span>
+                    </label>
+                    <div class="method-details" id="emailDetails" style="display: none;">
+                        <p><strong>Send Invoice Request:</strong></p>
+                        <p>Email: <strong>hubdarkest@gmail.com</strong></p>
+                        <p style="font-size: 0.9rem; color: #666;">
+                            Include in your email:
+                            <br>- Your username
+                            <br>- Plan name
+                            <br>- Contact information
+                        </p>
+                        <a href="mailto:hubdarkest@gmail.com?subject=TheFrontDesk%20Payment%20Invoice%20Request" class="email-btn">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-confirmation">
+                <label class="checkbox">
+                    <input type="checkbox" id="confirmPayment">
+                    <span>I confirm that I will make the payment using the details provided above</span>
+                </label>
+                <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment</button>
+            </div>
+
+            <div class="payment-security">
+                <i class="fas fa-shield-alt"></i>
+                <p>All payments are secure and verified. After payment, your account will be activated within 2 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Form Section -->
+    <section id="register" class="registration">
+        <h2>Join TheFrontDesk Today</h2>
+        <div class="form-container">
+            <div class="form-tabs">
+                <button class="tab-button active" onclick="switchTab('register')">Register</button>
+                <button class="tab-button" onclick="switchTab('login')">Login</button>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registerForm" class="auth-form active" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="fullname">Full Name *</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Kenyan) *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+254 7XX XXX XXX" pattern="^\+?254[0-9]{9}$">
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" required placeholder="Choose your username">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City/Town *</label>
+                    <select id="city" name="city" required>
+                        <option value="">Select City</option>
+                        <option value="nairobi">Nairobi</option>
+                        <option value="mombasa">Mombasa</option>
+                        <option value="kisumu">Kisumu</option>
+                        <option value="nakuru">Nakuru</option>
+                        <option value="eldoret">Eldoret</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required placeholder="Min 8 characters" minlength="8" oninput="checkPasswordStrength()">
+                    <div class="password-strength" id="passwordStrength"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password" minlength="8">
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to Terms of Service & Privacy Policy</label>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="marketing" name="marketing">
+                    <label for="marketing">Send me updates and special offers</label>
+                </div>
+
+                <button type="submit" class="form-submit">Create Account</button>
+            </form>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="login_email">Email Address *</label>
+                    <input type="email" id="login_email" name="login_email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="login_password">Password *</label>
+                    <input type="password" id="login_password" name="login_password" required placeholder="Enter your password" minlength="8">
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <button type="submit" class="form-submit">Login</button>
+
+                <div class="forgot-password">
+                    <a href="#forgot">Forgot Password?</a>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="message success-message" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Success!</h4>
+                    <p id="successText"></p>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="message error-message" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <h4>Error!</h4>
+                    <p id="errorText"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone / M-Pesa</h4>
+                        <p><strong>+254 781 306 215</strong></p>
+                        <p>For payments via M-Pesa & calls</p>
+                        <a href="tel:+254781306215" class="contact-link">
+                            <i class="fas fa-phone-alt"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <h4>WhatsApp Direct Chat</h4>
+                        <p><strong>+254 714 810 214</strong></p>
+                        <p>Available 24/7 for quick support</p>
+                        <a href="https://wa.me/254714810214?text=Hello%20TheFrontDesk%21%20I%20need%20assistance" target="_blank" class="contact-link whatsapp">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email Support</h4>
+                        <p><strong>hubdarkest@gmail.com</strong></p>
+                        <p>Response within 2 hours</p>
+                        <a href="mailto:hubdarkest@gmail.com?subject=TheFrontDesk%20Support%20Request" class="contact-link">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fab fa-telegram"></i>
+                    <div>
+                        <h4>Telegram Community</h4>
+                        <p><strong>TheFrontDesk Official Group</strong></p>
+                        <p>Join our community and get updates</p>
+                        <a href="https://t.me/TheFrontDesk_Official" target="_blank" class="contact-link telegram">
+                            <i class="fab fa-telegram"></i> Join Telegram Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleContactForm(event)">
+                <div class="form-group">
+                    <input type="text" name="name" required placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" required placeholder="Your Email">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="subject" required placeholder="Subject">
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" required placeholder="Your Message" rows="6"></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TheFrontDesk</h4>
+                <p>Your trusted platform for affordable and safe connections in Kenya</p>
+                <div class="social-links">
+                    <a href="https://wa.me/254714810214" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/TheFrontDesk_Official" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="mailto:hubdarkest@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+254781306215" title="Call"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#chat">Chat</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://wa.me/254714810214" target="_blank">WhatsApp Support</a></li>
+                    <li><a href="mailto:hubdarkest@gmail.com">Email Support</a></li>
+                    <li><a href="https://t.me/TheFrontDesk_Official" target="_blank">Telegram Group</a></li>
+                    <li><a href="tel:+254781306215">Phone Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Payment Methods</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> M-Pesa: 0781306215</li>
+                    <li><i class="fas fa-check"></i> Bank Transfer</li>
+                    <li><i class="fas fa-check"></i> Email Payment Link</li>
+                    <li><i class="fas fa-check"></i> WhatsApp Invoice</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 TheFrontDesk. All rights reserved. | Made with <i class="fas fa-heart"></i> for Kenya</p>
+            <p>Contact: <a href="tel:+254781306215">0781306215</a> | <a href="https://wa.me/254714810214">WhatsApp</a> | <a href="mailto:hubdarkest@gmail.com">Email</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
