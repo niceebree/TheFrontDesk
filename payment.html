@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - TheFrontDesk</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .payment-container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d44 100%);
+            padding: 2rem;
+        }
+        .payment-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        .payment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .payment-header h1 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .plan-details {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .payment-method {
+            border: 2px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .payment-method:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 157, 0.05);
+        }
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 157, 0.1);
+        }
+        .payment-method i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .payment-method span {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .payment-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .payment-security {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <span class="brand-name">TheFrontDesk</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-login" onclick="window.location.href='index.html'">Back Home</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="payment-container">
+        <div class="payment-card">
+            <div class="payment-header">
+                <h1>Complete Payment</h1>
+                <p>Secure and encrypted payment processing</p>
+            </div>
+
+            <div class="plan-details" id="planDetails">
+                <div class="plan-name" id="planName">Premium</div>
+                <div class="plan-price">KES <span id="planPrice">799</span><span>/month</span></div>
+            </div>
+
+            <form onsubmit="processPayment(event)">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">Select Payment Method</h3>
+                <div class="payment-methods">
+                    <div class="payment-method active" onclick="selectPaymentMethod('airtel')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Airtel Money</span>
+                    </div>
+                    <div class="payment-method" onclick="selectPaymentMethod('mpesa')">
+                        <i class="fas fa-wallet"></i>
+                        <span>M-Pesa</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Kenyan)</label>
+                    <input type="tel" id="phone" placeholder="0712345678" required value="0781306215">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem;">
+                    <i class="fas fa-lock"></i> Process Secure Payment
+                </button>
+            </form>
+
+            <div class="payment-footer">
+                <div class="payment-security">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Your payment is 100% secure and encrypted</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;">
+                    You will receive a confirmation SMS and email after successful payment.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPaymentMethod = 'airtel';
+
+        // Get plan from URL
+        const params = new URLSearchParams(window.location.search);
+        const plan = params.get('plan') || 'premium';
+
+        const plans = {
+            'starter': { name: 'Starter', price: 299 },
+            'premium': { name: 'Premium', price: 799 },
+            'vip': { name: 'VIP', price: 1499 }
+        };
+
+        const planData = plans[plan.toLowerCase()] || plans.premium;
+        document.getElementById('planName').textContent = planData.name;
+        document.getElementById('planPrice').textContent = planData.price;
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.target.closest('.payment-method').classList.add('active');
+        }
+
+        function processPayment(event) {
+            event.preventDefault();
+
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            // Validate phone
+            if (!phone.startsWith('0') || phone.length !== 10) {
+                alert('Please enter a valid Kenyan phone number');
+                return;
+            }
+
+            // Show loading
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            // Simulate payment processing
+            setTimeout(() => {
+                alert('Payment of KES ' + planData.price + ' initiated!\n\nYou will receive a payment prompt on ' + phone);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+
+                // Redirect to dashboard after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

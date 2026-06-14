@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TheFrontDesk</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <span class="brand-name">TheFrontDesk</span>
+            </div>
+            <div class="user-menu">
+                <span id="userGreeting"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="menu-items">
+                <a href="#" class="menu-item active" onclick="switchTab('profile')"><i class="fas fa-user"></i> My Profile</a>
+                <a href="#" class="menu-item" onclick="switchTab('discover')"><i class="fas fa-search"></i> Discover</a>
+                <a href="#" class="menu-item" onclick="switchTab('messages')"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="#" class="menu-item" onclick="switchTab('likes')"><i class="fas fa-heart"></i> Likes</a>
+                <a href="#" class="menu-item" onclick="switchTab('subscription')"><i class="fas fa-crown"></i> Subscription</a>
+                <a href="#" class="menu-item" onclick="switchTab('settings')"><i class="fas fa-cog"></i> Settings</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <!-- Profile Tab -->
+            <section id="profile-tab" class="tab-content active">
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="profile-grid">
+                    <div class="profile-photo-section">
+                        <div class="profile-photos">
+                            <div class="main-photo">
+                                <img id="mainPhoto" src="https://via.placeholder.com/300" alt="Main photo">
+                            </div>
+                            <div class="secondary-photos">
+                                <div class="photo-slot" id="photo1"><i class="fas fa-plus"></i></div>
+                                <div class="photo-slot" id="photo2"><i class="fas fa-plus"></i></div>
+                                <div class="photo-slot" id="photo3"><i class="fas fa-plus"></i></div>
+                                <div class="photo-slot" id="photo4"><i class="fas fa-plus"></i></div>
+                            </div>
+                        </div>
+                        <input type="file" id="photoUpload" multiple accept="image/*" hidden>
+                        <button class="btn-primary" onclick="document.getElementById('photoUpload').click()">
+                            <i class="fas fa-camera"></i> Upload Photos
+                        </button>
+                    </div>
+                    <div class="profile-info-section">
+                        <div class="info-card">
+                            <h3>Profile Information</h3>
+                            <form onsubmit="updateProfile(event)">
+                                <div class="form-group">
+                                    <label>Bio</label>
+                                    <textarea id="bio" placeholder="Tell us about yourself..." rows="4"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Interests</label>
+                                    <div class="interests-container">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="interests" value="Travel"> Travel
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="interests" value="Dining"> Dining
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="interests" value="Adventure"> Adventure
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="interests" value="Movies"> Movies
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">Save Profile</button>
+                            </form>
+                        </div>
+                        <div class="stats-card">
+                            <h3>Profile Stats</h3>
+                            <div class="stat-item">
+                                <span class="stat-label">Profile Views</span>
+                                <span class="stat-value" id="viewCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Likes Received</span>
+                                <span class="stat-value" id="likeCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Messages</span>
+                                <span class="stat-value" id="messageCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Discover Tab -->
+            <section id="discover-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Discover</h2>
+                    <div class="filter-controls">
+                        <select id="genderFilter" onchange="filterProfiles()">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="text" id="locationFilter" placeholder="Filter by location" onkeyup="filterProfiles()">
+                    </div>
+                </div>
+                <div class="profiles-grid" id="profilesGrid">
+                    <!-- Profiles will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Messages Tab -->
+            <section id="messages-tab" class="tab-content">
+                <div class="messages-container">
+                    <div class="conversations-list" id="conversationsList">
+                        <!-- Conversations will be loaded here -->
+                    </div>
+                    <div class="chat-window">
+                        <div class="chat-header">
+                            <h3 id="chatWith">Select a conversation</h3>
+                        </div>
+                        <div class="messages-list" id="messagesList">
+                            <!-- Messages will be displayed here -->
+                        </div>
+                        <div class="message-input">
+                            <form onsubmit="sendMessage(event)">
+                                <input type="text" id="messageText" placeholder="Type a message..." required>
+                                <button type="submit" class="btn-send"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Likes Tab -->
+            <section id="likes-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>People Who Liked You</h2>
+                </div>
+                <div class="likes-grid" id="likesGrid">
+                    <!-- Likes will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Subscription Tab -->
+            <section id="subscription-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Your Subscription</h2>
+                </div>
+                <div class="subscription-info">
+                    <div class="current-plan" id="currentPlan">
+                        <h3>Current Plan: Free</h3>
+                        <p>Upgrade to unlock premium features</p>
+                    </div>
+                    <div class="upgrade-plans">
+                        <div class="plan-card">
+                            <h3>Premium</h3>
+                            <div class="price">KES 799<span>/month</span></div>
+                            <ul>
+                                <li>Unlimited Photos</li>
+                                <li>Unlimited Messaging</li>
+                                <li>Priority Support</li>
+                            </ul>
+                            <button class="btn-primary" onclick="upgradePlan('premium')">Upgrade Now</button>
+                        </div>
+                        <div class="plan-card">
+                            <h3>VIP</h3>
+                            <div class="price">KES 1,499<span>/month</span></div>
+                            <ul>
+                                <li>Everything in Premium</li>
+                                <li>VIP Badge</li>
+                                <li>Priority Matching</li>
+                            </ul>
+                            <button class="btn-primary" onclick="upgradePlan('vip')">Upgrade Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Tab -->
+            <section id="settings-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-form">
+                    <div class="settings-section">
+                        <h3>Privacy Settings</h3>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="privacyProfile">
+                            <span>Make profile private</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="showOnlineStatus">
+                            <span>Show online status</span>
+                        </label>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Notification Settings</h3>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="emailNotifications" checked>
+                            <span>Email notifications</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="pushNotifications" checked>
+                            <span>Push notifications</span>
+                        </label>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Account Management</h3>
+                        <button class="btn-secondary" onclick="changePassword()">Change Password</button>
+                        <button class="btn-danger" onclick="deleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
