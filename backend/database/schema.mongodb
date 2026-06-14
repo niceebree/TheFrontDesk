@@ -1,0 +1,265 @@
+// ============================================
+// TheFrontDesk - Database Schema (MongoDB)
+// ============================================
+
+// ============================================
+// Users Collection
+// ============================================
+
+db.createCollection("users");
+db.users.createIndex({ email: 1 }, { unique: true });
+db.users.createIndex({ phone: 1 });
+db.users.createIndex({ createdAt: -1 });
+
+// Users Schema
+{
+  _id: ObjectId,
+  firstName: String,
+  lastName: String,
+  email: String,              // unique
+  phone: String,
+  age: Number,                // min: 18
+  gender: String,             // Male, Female, Other
+  location: String,
+  bio: String,
+  password: String,           // hashed
+  verified: Boolean,          // email/phone verified
+  verificationCode: String,
+  verificationCodeExpires: Date,
+  avatar: String,             // photo URL
+  subscription: String,       // free, starter, premium, vip
+  subscriptionEndDate: Date,
+  preferences: {
+    ageRange: {
+      min: Number,
+      max: Number
+    },
+    genderPreference: String,
+    locationPreference: String
+  },
+  isActive: Boolean,
+  lastLogin: Date,
+  isBlocked: Boolean,
+  blockReason: String,
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Profiles Collection
+// ============================================
+
+db.createCollection("profiles");
+db.profiles.createIndex({ userId: 1 }, { unique: true });
+db.profiles.createIndex({ updatedAt: -1 });
+
+// Profiles Schema
+{
+  _id: ObjectId,
+  userId: ObjectId,           // reference to users
+  photos: [
+    {
+      url: String,
+      filename: String,
+      uploadedAt: Date,
+      isVerified: Boolean
+    }
+  ],
+  bio: String,
+  interests: [String],        // e.g., ["travel", "dining", "adventure"]
+  preferences: {
+    ageRange: { min: Number, max: Number },
+    genderPreference: String,
+    location: String
+  },
+  stats: {
+    views: Number,
+    likes: Number,
+    messages: Number,
+    verified: Boolean,
+    verificationDate: Date
+  },
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Messages Collection
+// ============================================
+
+db.createCollection("messages");
+db.messages.createIndex({ senderId: 1, recipientId: 1, createdAt: -1 });
+db.messages.createIndex({ createdAt: -1 }, { expireAfterSeconds: 7776000 }); // 90 days TTL
+
+// Messages Schema
+{
+  _id: ObjectId,
+  senderId: ObjectId,         // reference to users
+  recipientId: ObjectId,      // reference to users
+  text: String,
+  attachments: [String],      // URLs to photos/files
+  read: Boolean,
+  readAt: Date,
+  deletedBySender: Boolean,
+  deletedByRecipient: Boolean,
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Payments Collection
+// ============================================
+
+db.createCollection("payments");
+db.payments.createIndex({ userId: 1, createdAt: -1 });
+db.payments.createIndex({ transactionId: 1 }, { unique: true });
+db.payments.createIndex({ status: 1 });
+
+// Payments Schema
+{
+  _id: ObjectId,
+  transactionId: String,      // unique
+  userId: ObjectId,           // reference to users
+  amount: Number,             // in KES
+  currency: String,           // "KES"
+  method: String,             // "airtel_money", "mpesa", "card"
+  phoneNumber: String,        // for mobile money
+  description: String,
+  status: String,             // "pending", "completed", "failed", "cancelled"
+  receipt: String,
+  metadata: Object,           // additional payment info
+  createdAt: Date,
+  completedAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Subscriptions Collection
+// ============================================
+
+db.createCollection("subscriptions");
+db.subscriptions.createIndex({ userId: 1 });
+db.subscriptions.createIndex({ status: 1 });
+db.subscriptions.createIndex({ endDate: 1 });
+
+// Subscriptions Schema
+{
+  _id: ObjectId,
+  userId: ObjectId,           // reference to users
+  planId: String,             // "starter", "premium", "vip"
+  planName: String,
+  price: Number,              // in KES
+  duration: String,           // "month", "year"
+  startDate: Date,
+  endDate: Date,
+  status: String,             // "active", "expired", "cancelled"
+  autoRenew: Boolean,
+  paymentId: ObjectId,        // reference to payments
+  cancellationReason: String,
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Interactions Collection (Likes, Views)
+// ============================================
+
+db.createCollection("interactions");
+db.interactions.createIndex({ userId: 1, targetUserId: 1 }, { unique: true });
+db.interactions.createIndex({ type: 1 });
+
+// Interactions Schema
+{
+  _id: ObjectId,
+  userId: ObjectId,           // person taking action
+  targetUserId: ObjectId,     // person receiving action
+  type: String,               // "like", "view", "message", "block"
+  status: String,             // for likes: "active", "cancelled"
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// ============================================
+// Matches Collection
+// ============================================
+
+db.createCollection("matches");
+db.matches.createIndex({ user1Id: 1, user2Id: 1 }, { unique: true });
+db.matches.createIndex({ matchedAt: -1 });
+
+// Matches Schema
+{
+  _id: ObjectId,
+  user1Id: ObjectId,          // first user
+  user2Id: ObjectId,          // second user
+  matchScore: Number,         // 0-100, based on preferences
+  status: String,             // "active", "declined", "expired"
+  conversationStarted: Boolean,
+  lastInteractionAt: Date,
+  matchedAt: Date,
+  expiresAt: Date,            // auto-expire after 30 days
+  updatedAt: Date
+}
+
+// ============================================
+// Blocks Collection
+// ============================================
+
+db.createCollection("blocks");
+db.blocks.createIndex({ userId: 1, blockedUserId: 1 }, { unique: true });
+
+// Blocks Schema
+{
+  _id: ObjectId,
+  userId: ObjectId,           // person doing blocking
+  blockedUserId: ObjectId,    // person being blocked
+  reason: String,
+  reportedContent: String,
+  status: String,             // "active", "resolved"
+  createdAt: Date,
+  resolvedAt: Date
+}
+
+// ============================================
+// Contact Messages Collection
+// ============================================
+
+db.createCollection("contactMessages");
+db.contactMessages.createIndex({ createdAt: -1 });
+db.contactMessages.createIndex({ status: 1 });
+
+// Contact Messages Schema
+{
+  _id: ObjectId,
+  name: String,
+  email: String,
+  phone: String,
+  subject: String,
+  message: String,
+  status: String,             // "new", "read", "responded"
+  response: String,
+  respondedAt: Date,
+  createdAt: Date
+}
+
+// ============================================
+// Analytics Collection
+// ============================================
+
+db.createCollection("analytics");
+db.analytics.createIndex({ date: -1 });
+db.analytics.createIndex({ userId: 1, date: -1 });
+
+// Analytics Schema
+{
+  _id: ObjectId,
+  userId: ObjectId,
+  date: Date,
+  metrics: {
+    profileViews: Number,
+    likesReceived: Number,
+    messagesReceived: Number,
+    messagesRead: Number
+  },
+  engagement: Number          // 0-100
+}
